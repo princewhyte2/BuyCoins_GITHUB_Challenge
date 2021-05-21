@@ -14,19 +14,94 @@
   <body>
     <!-- header section -->
     <header>
+      <!-- mobile navigation menu -->
       <nav class="navbar" id="mobile-navbar">
         <ul class="mobile-nav-wrapper">
-          <li class="mobile-nav-item"><i class="fas fa-bars"></i></li>
-          <li class="mobile-nav-item github"><i class="fab fa-github"></i></li>
-          <li class="mobile-nav-item"><i class="far fa-bell"></i></li>
+          <li class="mobile-nav-item">
+            <i class="fas fa-bars" style="font-size: 24px"></i>
+          </li>
+          <li onclick="showResponsiveNav()" class="mobile-nav-item github">
+            <i class="fab fa-github" style="font-size: 32px"></i>
+          </li>
+          <li class="mobile-nav-item">
+            <i class="far fa-bell" style="font-size: 16px"></i>
+          </li>
+        </ul>
+
+        <ul class="mobile-nav-menu">
+          <li>
+            <div class="mobile-input-div">
+              <input
+                style="width: 100%"
+                type="search"
+                name=""
+                placeholder="Search or jump to.."
+                id="responsive-search-input"
+              />
+              <span id="mobile-navbar-search-btn">
+                <img
+                  class="res-img"
+                  src="./images/search-key-slash.svg"
+                  alt="slash_icon"
+                />
+              </span>
+            </div>
+          </li>
+          <li class="responsive-nav-item"><a href="#">Dashboard</a></li>
+          <li class="responsive-nav-item"><a href="#">Pull requests</a></li>
+          <li class="responsive-nav-item"><a href="#">Issues</a></li>
+          <li class="responsive-nav-item"><a href="#">Marketplace</a></li>
+          <li class="responsive-nav-item"><a href="#">Explore</a></li>
+          <li class="responsive-nav-item"><a href="#">Codespaces</a></li>
+          <li class="responsive-nav-item"><a href="#">Sponsors</a></li>
+          <li class="responsive-nav-item"><a href="#">Settings</a></li>
+          <li class="responsive-nav-item">
+            <a href="#"
+              ><img
+                src="./images/avatar.jpg"
+                width="20"
+                height="20"
+                class="profile_avatar"
+                alt="profile_avatar"
+              />
+              princewhyte2
+            </a>
+          </li>
+          <li class="responsive-nav-item">
+            <a href="#"
+              ><i class="fas fa-sign-out-alt sign-out"></i> Sign out</a
+            >
+          </li>
         </ul>
       </nav>
+      <section class="profile_detail">
+        <div class="image-div">
+          <img
+            class="profile_avatar"
+            src="./images/avatar.jpg"
+            width="55"
+            height="55"
+            alt="profile_avatar"
+          />
+        </div>
+        <div class="name-div">
+          <h4>
+            Princewhyte <br />
+            Dabotubo
+          </h4>
+
+          <span class="username">princewhyte2</span>
+        </div>
+      </section>
+
+      <!-- desktop design -->
+      <!-- desktop navigation menu -->
       <nav class="navbar" id="desktop-navbar">
         <div class="desktop-nav-wrapper">
           <a href="#" class="desktop-nav-item"
             ><i class="githubIcon fab fa-github"></i
           ></a>
-          <div class="search-box">
+          <div class="input-search">
             <input
               type="search"
               name=""
@@ -55,7 +130,7 @@
             <img
               src="./images/search-key-slash.svg"
               alt="profile_pix"
-              class="desktop-user-icon-img"
+              class="image-icon"
               width="18"
               height="18"
             />
