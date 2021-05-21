@@ -11,6 +11,7 @@ body {
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
   margin: 0px;
   font-size: 14px;
+  word-wrap: break-word;
   box-sizing: border-box;
   overflow-x: hidden;
   width: 100%;
@@ -18,94 +19,95 @@ body {
 
 .header {
   width: 100%;
-  background-color: #010409;
-}
-
-#mobile-navbar,
-#desktop-navbar {
   background-color: #24292f;
-  width: 100%;
-  padding: 0.6rem 1rem;
-  height: 54px;
 }
-
-.mobile-nav-wrapper,
-#desktop-navbar,
-.desktop-user-icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#desktop-navbar {
-  display: none;
-}
-
-.desktop-nav-wrapper,
-.desktop-nav-action {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.desktop-nav-wrapper a,
-.desktop-user-icon,
-.desktop-nav-item {
-  text-decoration: none;
-  color: #fff;
-}
-
-.desktop-nav-item {
-  font-size: 13px;
-}
-
-.desktop-nav-action .fa-caret-down {
-  margin-left: 5px;
-}
-
-.mobile-nav-item {
-  color: #fff;
-  list-style: none;
-  font-size: 18px;
-}
-
 .githubIcon {
   font-size: 24px;
   color: #fff;
 }
+/* hide desktop menu on mobile device */
+#desktop-navbar {
+  display: none;
+}
 
-.search-box {
+#mobile-navbar {
+  background-color: #161b22;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.mobile-nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+#mobile-navbar-search-btn {
+  position: absolute;
+  right: 20px;
+  margin-top: 13px;
+}
+.profile_avatar {
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+li {
+  list-style: none;
+}
+.responsive-nav-item {
+  display: block;
+  border-top: 1px solid #30363d;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+.sign-out {
+  margin-bottom: 20px;
+}
+input[type="search"] {
+  background-color: black;
+  border-style: none;
+  padding: 6px;
+  border-radius: 6px;
+  box-shadow: none;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 19px;
+}
+input[type="search"]:focus {
+  border: 1px solid #388bfd;
+  outline: none !important;
+  box-shadow: none;
+  color: white;
+  background-color: #21262d;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.mobile-nav-menu {
+  flex-direction: column;
+  width: 100%;
+}
+.input-search {
   border: 1px solid #808080af;
   border-radius: 3px;
   padding: 3px 2px;
   font-size: 12px;
 }
-
-.desktop-navbar-search-btn {
-  border: 1px solid #808080af;
-  padding: 1px 5px;
-  border-radius: 3px;
-  color: grey;
+.name-div {
 }
-
-#desktop-search-input {
-  background: none;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 12px;
-}
-
-#desktop-search-input::placeholder {
-  color: #ffffff7e;
-}
-
-.desktop-nav-link {
-  font-size: 13px;
-}
-
-.desktop-user-icon-img {
+.image-icon {
   border-radius: 50%;
+}
+
+.profile_detail div {
+  display: inline-block;
 }
 
 @media screen and (min-width: 615px) {
@@ -114,6 +116,62 @@ body {
   }
   #desktop-navbar {
     display: flex;
+    background-color: #24292f;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    height: 54px;
+  }
+
+  .desktop-nav-wrapper,
+  .desktop-nav-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  #desktop-navbar,
+  .desktop-user-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .desktop-nav-wrapper a,
+  .desktop-user-icon,
+  .desktop-nav-item {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .desktop-nav-item {
+    font-size: 13px;
+  }
+
+  .desktop-nav-action .fa-caret-down {
+    margin-left: 5px;
+  }
+
+  #desktop-search-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  #desktop-search-input::placeholder {
+    color: #ffffff7e;
+  }
+
+  .desktop-nav-link {
+    font-size: 13px;
+  }
+  .desktop-navbar-search-btn {
+    border: 1px solid #808080af;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: grey;
   }
 }
 
