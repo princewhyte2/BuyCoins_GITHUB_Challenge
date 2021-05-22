@@ -259,9 +259,8 @@ a {
   color: #c9d1d9;
   background-color: #21262d;
   box-shadow: 0 0 transparent;
-  border-color: #30363d;
   line-height: 20px;
-  border: 1px solid;
+  border: 1px solid #30363d;
   border-radius: 6px;
   padding: 3px 12px;
   position: relative;
