@@ -15,6 +15,8 @@ body {
   font-size: 14px;
   word-wrap: break-word;
   box-sizing: border-box;
+  color: white;
+  background-color: black;
   position: absolute;
   max-width: 100%;
 }
@@ -29,6 +31,10 @@ body {
 }
 /* hide desktop menu on mobile device */
 #desktop-navbar {
+  display: none;
+}
+
+.hidden {
   display: none;
 }
 
@@ -243,12 +249,19 @@ a {
   margin-top: 8px;
   color: #8b949e;
 }
-
+.repo-detail span {
+  margin-right: 16px;
+}
 .repo-title {
   display: inline-block;
   margin-bottom: 4px;
 }
-
+.repo-description p {
+  padding-bottom: 24px;
+  margin-bottom: 8px;
+  width: 75%;
+  color: #8b949e;
+}
 .right-div {
   text-align: right;
 }
@@ -273,8 +286,10 @@ a {
   #mobile-navbar {
     display: none;
   }
+  #mobile-screen {
+    display: none;
+  }
   #desktop-navbar {
-    display: flex;
     background-color: #24292f;
     width: 100%;
     padding: 0.6rem 1rem;
