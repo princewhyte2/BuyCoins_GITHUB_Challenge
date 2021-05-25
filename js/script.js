@@ -17,9 +17,10 @@ var content = {
       avatarUrl
       name
       login
-      repositories(first: 20 , isFork: false) {
+      repositories(last: 20 , isFork: false) {
         nodes {
           forkCount
+          stargazerCount
           description
           name
           updatedAt
@@ -45,12 +46,13 @@ var userImage = document.getElementById("avatarUrl");
 var firstName = document.getElementById("firstName");
 var lastName = document.getElementById("lastName");
 var userRepoList = document.getElementById("user-repo-list");
+var repositories;
 
 fetch("https://api.github.com/graphql", {
   method: "post",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer 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",
+    Authorization: "Bearer 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",
   },
   body: body,
 })
@@ -64,39 +66,65 @@ fetch("https://api.github.com/graphql", {
     userLogin.textContent += resp.data.user.login;
     userBio.textContent += resp.data.user.bio;
     userImage.src = resp.data.user.avatarUrl;
-    var repositories = resp.data.user.repositories.nodes;
+    repositories = resp.data.user.repositories.nodes;
     console.log(repositories);
-    repositories.forEach((item) => {
+
+    repositories.map((item) => {
+      var date = Date.parse(item.updatedAt);
+      var today = Date.parse(new Date());
+      var msInDay = 24 * 60 * 60 * 1000;
+      var diff = today - date;
+      //console.log(today);
+      console.log(diff);
+      var color = `<i style="display:none"></i>`;
+      var description = `<div style="margin: 12px"></div>`;
+      var stargazerCount = `<i style="display:none"></i>`;
+      var forkCount = `<i style="display:none"></i>`;
+      if (item.primaryLanguage) {
+        color = `<i class="fas fa-circle" style="display:'inline-block';color:${item.primaryLanguage.color}"></i>
+        <span id="repo-lan "> ${item.primaryLanguage.name} </span>`;
+      }
+
+      if (item.description) {
+        description = `<div class="repo-description">
+        <p>${item.description}</p>
+      </div>`;
+      }
+
+      if (item.stargazerCount) {
+        stargazerCount = ` <i class="far fa-star"></i>
+        <span id="repo-star-count"> ${item.stargazerCount} </span>`;
+      }
+
+      if (item.forkCount) {
+        forkCount = `<i class="fas fa-code-branch"></i>
+        <span id="branch-count"> ${item.forkCount}</span>`;
+      }
       userRepoList.innerHTML += `
-        <li class="user-repo-items">
-        <div class="user-repo-info-div">
-          <div class="repo-title-div">
-            <h3 id="repo-title">${item.name}</h3>
-          </div>
-          <div class="repo-description">
-            <p>${item.description}</p>
-          </div>
-          <div class="repo-detail">
-            <i class="fas fa-circle" style="color:${item.primaryLanguage.color}"></i>
-            <span id="repo-lan"> ${item.primaryLanguage.name} </span>
-            <i class="far fa-star"></i>
-            <span id="repo-star-count"> ${item.forkCount} </span>
-            <i class="fas fa-code-branch"></i>
-            <span id="branch-count"> 345</span> Updated
-            <span class="repo-update"> on days ago</span>
+      <li class="user-repo-items">
+      <div class="user-repo-info-div">
+        <div class="repo-title-div">
+          <h3 id="repo-title">${item.name}</h3>
+        </div>
+       ${description}
+        <div class="repo-detail">
+        ${color}
+         ${stargazerCount} ${forkCount}
+           Updated
+          <span class="repo-update"> on days ago</span>
+        </div>
+      </div>
+      <div class="user-star-div">
+        <div class="position-right-div">
+          <div class="star-button-div">
+            <button class="repo-star-button">
+              <i class="far fa-star"></i> Star
+            </button>
           </div>
         </div>
-        <div class="user-star-div">
-          <div class="position-right-div">
-            <div class="star-button-div">
-              <button class="repo-star-button">
-                <i class="far fa-star"></i> Star
-              </button>
-            </div>
-          </div>
-        </div>
-      </li>
-       `;
+      </div>
+    </li>
+     `;
     });
   })
   .catch((err) => {

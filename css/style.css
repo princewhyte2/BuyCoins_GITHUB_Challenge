@@ -5,7 +5,6 @@
 }
 html {
   display: block;
-  width: fit-content;
 }
 
 body {
@@ -17,7 +16,7 @@ body {
   box-sizing: border-box;
   color: white;
   background-color: black;
-  position: absolute;
+
   max-width: 100%;
 }
 
@@ -30,7 +29,7 @@ body {
   color: #fff;
 }
 /* hide desktop menu on mobile device */
-#desktop-navbar {
+#desktop-view {
   display: none;
 }
 
@@ -115,7 +114,7 @@ a {
   color: #f0f6fc !important;
   font-size: 14px !important;
 }
-.tab-items .active-item {
+#active-item {
   font-weight: 600;
   color: #c9d1d9;
   border-bottom-color: #f9826c;
@@ -234,9 +233,6 @@ a {
   height: 12px;
   border-radius: 50%;
 }
-.fa-circle {
-  color: #f9826c;
-}
 
 #repo-lan {
   font-size: 12px;
@@ -258,7 +254,7 @@ a {
 }
 .repo-description p {
   padding-bottom: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   width: 75%;
   color: #8b949e;
 }
@@ -282,12 +278,17 @@ a {
   font-weight: 500;
   font-size: 12px;
 }
+
 @media screen and (min-width: 615px) {
   #mobile-navbar {
     display: none;
   }
   #mobile-screen {
     display: none;
+  }
+
+  #desktop-view {
+    display: block;
   }
   #desktop-navbar {
     background-color: #24292f;
@@ -347,11 +348,115 @@ a {
     border-radius: 3px;
     color: grey;
   }
+
+  .desktop-tab-section {
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    background-color: #0d1117;
+    border-color: #21262d;
+    border-bottom: #30363d;
+  }
+  .desktop-tab-div {
+    margin-right: auto;
+    max-width: 88%;
+    margin-left: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .tab-flex-div {
+    display: flex;
+    flex-direction: row;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  .tab-flex-section-one {
+    padding-right: 8px;
+    padding-left: 8px;
+    /* width: 25px; */
+  }
+  .tab-flex-section-two {
+    padding-right: 8px;
+    padding-left: 8px;
+    width: 75px;
+  }
+  .user-profile-div {
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    width: 240px;
+    word-break: break-all;
+    z-index: 5;
+  }
+  .user-profile-card {
+    position: relative;
+    top: 1px;
+    z-index: 10;
+    height: 54px;
+    display: table;
+  }
+  .user-table-cell-one {
+    display: table-cell;
+    line-height: 1px;
+    padding-right: 8px;
+    vertical-align: middle;
+  }
+  .user-table-cell-two {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 1.2px;
+  }
+  .tab-nav-div {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+  }
+  .tab-nav-div nav {
+    display: flex;
+  }
+  .desktop-nav-tab {
+    padding: 8px 16px;
+    border-bottom: 2px solid transparent;
+    font-size: 14px;
+    line-height: 30px;
+    color: #8b949e;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .desktop-body-section {
+    padding-right: 24px;
+    padding-right: 24px;
+    max-width: 88%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .desktop-body-div {
+    display: flex;
+    flex-direction: row;
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .desktop-profile-detail-div {
+    padding-right: 8px;
+    padding-left: 8px;
+    width: 25%;
+  }
+  .desktop-repo-div {
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 75%;
+  }
+  .user-detail-card {
+    margin-top: 32px;
+  }
 }
 
 /* Responsive  */
 
 /* For mobile large */
-
-@media only screen and (max-width: 600px) {
-}
