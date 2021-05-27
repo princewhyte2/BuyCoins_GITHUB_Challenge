@@ -45,7 +45,7 @@ var userBio = document.getElementById("bio");
 var userImage = document.getElementById("avatarUrl");
 var firstName = document.getElementById("firstName");
 var lastName = document.getElementById("lastName");
-var userRepoList = document.getElementById("user-repo-list");
+var userRepoList = document.querySelectorAll(".user-repo-list");
 var repositories;
 
 fetch("https://api.github.com/graphql", {
@@ -59,6 +59,7 @@ fetch("https://api.github.com/graphql", {
   .then((res) => res.json())
   .then((resp) => {
     //console.log(resp.data);
+    console.log("the inner width = ", window.innerWidth);
     var name = resp.data.user.name.split(" ");
     firstName.textContent += name[0];
     lastName.textContent += name[1];
@@ -100,31 +101,33 @@ fetch("https://api.github.com/graphql", {
         forkCount = `<i class="fas fa-code-branch"></i>
         <span id="branch-count"> ${item.forkCount}</span>`;
       }
-      userRepoList.innerHTML += `
-      <li class="user-repo-items">
-      <div class="user-repo-info-div">
-        <div class="repo-title-div">
-          <h3 id="repo-title">${item.name}</h3>
-        </div>
-       ${description}
-        <div class="repo-detail">
-        ${color}
-         ${stargazerCount} ${forkCount}
-           Updated
-          <span class="repo-update"> on days ago</span>
-        </div>
-      </div>
-      <div class="user-star-div">
-        <div class="position-right-div">
-          <div class="star-button-div">
-            <button class="repo-star-button">
-              <i class="far fa-star"></i> Star
-            </button>
+      userRepoList.forEach((elem) => {
+        elem.innerHTML += `
+        <li class="user-repo-items">
+        <div class="user-repo-info-div">
+          <div class="repo-title-div">
+            <h3 id="repo-title">${item.name}</h3>
+          </div>
+         ${description}
+          <div class="repo-detail">
+          ${color}
+           ${stargazerCount} ${forkCount}
+             Updated
+            <span class="repo-update"> on days ago</span>
           </div>
         </div>
-      </div>
-    </li>
-     `;
+        <div class="user-star-div">
+          <div class="position-right-div">
+            <div class="star-button-div">
+              <button class="repo-star-button">
+                <i class="far fa-star"></i> Star
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+       `;
+      });
     });
   })
   .catch((err) => {

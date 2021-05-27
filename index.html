@@ -123,7 +123,7 @@
           </div>
         </section>
         <section class="user-repo-section">
-          <ul id="user-repo-list">
+          <ul class="user-repo-list">
             <!-- <li class="user-repo-items">
               <div class="user-repo-info-div">
                 <div class="repo-title-div">
@@ -164,18 +164,19 @@
         <nav class="navbar" id="desktop-navbar">
           <div class="desktop-nav-wrapper">
             <a href="#" class="desktop-nav-item"
-              ><i class="githubIcon fab fa-github"></i
+              ><i class="desktop-githubIcon fab fa-github"></i
             ></a>
-            <div class="input-search">
+            <div class="mobile-input-div">
               <input
+                style="width: 100%"
                 type="search"
                 name=""
                 placeholder="Search or jump to.."
-                id="desktop-search-input"
+                id="responsive-search-input"
               />
-              <span id="desktop-navbar-search-btn">
+              <span id="mobile-navbar-search-btn">
                 <img
-                  class="img"
+                  class="res-img"
                   src="./images/search-key-slash.svg"
                   alt="slash_icon"
                 />
@@ -224,14 +225,14 @@
                 <div class="tab-nav-div">
                   <nav>
                     <a href="#" class="desktop-nav-tab"
-                      ><i class="fas fa-book-open"></i> Overview</a
+                      ><i class="fas fa-book-open"></i> &nbsp;Overview</a
                     ><a href="#" id="active-item" class="desktop-nav-tab"
-                      ><i class="fas fa-book"></i> Repositories
+                      ><i class="fas fa-book"></i> &nbsp;Repositories
                       <span class="count">55</span></a
                     ><a href="#" class="desktop-nav-tab"
-                      ><i class="fas fa-poll"> </i>Projects</a
+                      ><i class="fas fa-poll"> </i> &nbsp;Projects</a
                     ><a href="#" class="desktop-nav-tab"
-                      ><i class="fas fa-cube"></i> Packages</a
+                      ><i class="fas fa-cube"></i> &nbsp;Packages</a
                     >
                   </nav>
                 </div>
@@ -242,20 +243,95 @@
         <section class="desktop-body-section">
           <div class="desktop-body-div">
             <div class="desktop-profile-detail-div">
-              <div class="user-detail-card">
-                <div class="user-profile-div">
-                  <div class="user-profile-card">
+              <div class="desktop-user-detail-card">
+                <div class="desktop-user-profile-div">
+                  <div class="desktop-user-profile-card">
                     <span class="user-table-cell-one">
-                      <img src="./images/avatar.jpg" width="32px" height="32px"
+                      <img
+                        src="./images/avatar.jpg"
+                        width="32px"
+                        height="32px"
+                        alt="profile-pix"
                     /></span>
                     <span class="user-table-cell-two"
                       ><strong>Princewhyte2</strong></span
                     >
                   </div>
+                  <div class="image-name-div">
+                    <div class="img-container">
+                      <img
+                        src="./images/avatar.jpg"
+                        alt="profile-picture"
+                        class="dp-img"
+                        width="260px"
+                        height="auto"
+                      />
+                    </div>
+                    <div class="user-name-div">
+                      <h4 class="userName-header">
+                        <span class="user-fullname-span"
+                          >Princewhyte Dabotubo</span
+                        ><span class="user-name-span">Princewhyte2</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="desktop-user-bio-div">
+                    <div>
+                      A lover of tech worked with python , javascript and a
+                      little C and Java. Senior Software Developer at CAD
+                      Consulting
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="desktop-repo-div"></div>
+            <div class="desktop-repo-div">
+              <div class="repo-search-div">
+                <div class="flex-div">
+                  <div>
+                    <input
+                      type="search"
+                      class="input-form"
+                      placeholder="Find a repository..."
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="user-repo-section">
+                <ul class="user-repo-list">
+                  <!-- <li class="user-repo-items">
+                    <div class="user-repo-info-div">
+                      <div class="repo-title-div">
+                        <h3 id="repo-title">GraphQL-GitHub-API</h3>
+                      </div>
+                      <div class="repo-description">
+                        <p>
+                          This is the latest advanced react patterns workshop
+                        </p>
+                      </div>
+                      <div class="repo-detail">
+                        <i class="fas fa-circle"></i>
+                        <span id="repo-lan"> javascript </span>
+                        <i class="far fa-star"></i>
+                        <span id="repo-star-count"> 20 </span>
+                        <i class="fas fa-code-branch"></i>
+                        <span id="branch-count"> 345</span> Updated
+                        <span class="repo-update"> on days ago</span>
+                      </div>
+                    </div>
+                    <div class="user-star-div">
+                      <div class="position-right-div">
+                        <div class="star-button-div">
+                          <button class="repo-star-button">
+                            <i class="far fa-star"></i> Star
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </main>
