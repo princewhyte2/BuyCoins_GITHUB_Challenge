@@ -13,10 +13,13 @@ var mobileScreen = document.getElementById("mobile-screen");
 var desktopView = document.getElementById("desktop-view");
 
 var form = document.getElementById("myForm");
+var repoForm = document.getElementById("repo-form");
 function handleForm(event) {
   event.preventDefault();
 }
 form.addEventListener("submit", handleForm);
+repoForm.addEventListener("submit", searchRepo);
+
 function showSpinner() {
   loadingDiv.style.visibility = "visible";
 }
@@ -25,12 +28,27 @@ function hideSpinner() {
   loadingDiv.style.visibility = "hidden";
 }
 
+function searchRepo(event) {
+  event.preventDefault();
+
+  var searchName = document.getElementById("repo-input").value;
+  console.log(searchName);
+  showSpinner();
+  fetchData(searchName);
+  repoForm.reset();
+}
+
 function getRepo() {
   var loginName = document.getElementById("login-name").value;
+
   console.log(loginName);
 
   showSpinner();
 
+  fetchData(loginName);
+}
+
+function fetchData(loginName) {
   var content = {
     query: `query($loginName: String!){
     user(login: $loginName) {
@@ -67,10 +85,12 @@ function getRepo() {
   var userImage = document.querySelectorAll(".avatarUrl");
   var firstName = document.getElementById("firstName");
   var lastName = document.getElementById("lastName");
-  var userRepoList = document.querySelectorAll(".user-repo-list");
-  var repositories;
+  var userRepoList = document.querySelectorAll(".user-repo-section");
+  userRepoList.forEach((elem) => {
+    elem.innerHTML = "";
+  });
   var fullName = document.getElementById("fullName");
-  const mediaQuery = window.matchMedia("(min-width : 720px)");
+  var mediaQuery = window.matchMedia("(min-width : 780px)");
 
   function handleResponsiveness(e) {
     if (mediaQuery.matches) {
@@ -98,32 +118,42 @@ function getRepo() {
       hideSpinner();
       if (!resp.data.user) {
         dispalyInfoDiv.style.visibility = "visible";
-        dispalyInfoDiv.textContent += resp.data.user;
+        dispalyInfoDiv.textContent = resp.data.user;
       } else {
         handleResponsiveness(mediaQuery);
         mediaQuery.addEventListener("change", handleResponsiveness);
-        var name = resp.data.user.name.split(" ");
-        fullName.textContent += resp.data.user.name;
-        firstName.textContent += name[0];
 
-        lastName.textContent += name[1];
+        userRepoList.forEach((elem) => {
+          var ul = document.createElement("ul");
+          ul.classList.add("user-repo-list");
+          elem.appendChild(ul);
+        });
+
+        var li = document.querySelectorAll(".user-repo-list");
+
+        if (resp.data.user.name) {
+          var name = resp.data.user.name.split(" ");
+          fullName.textContent = resp.data.user.name;
+          firstName.textContent = name[0];
+          lastName.textContent = name[1];
+        }
 
         userName.forEach((elem) => {
-          elem.textContent += resp.data.user.login;
+          elem.textContent = resp.data.user.login;
         });
 
         userLogin.forEach((elem) => {
-          elem.textContent += resp.data.user.login;
+          elem.textContent = resp.data.user.login;
         });
 
         userBio.forEach((elem) => {
-          elem.textContent += resp.data.user.bio;
+          elem.textContent = resp.data.user.bio;
         });
 
         userImage.forEach((elem) => {
           elem.src = resp.data.user.avatarUrl;
         });
-        repositories = resp.data.user.repositories.nodes;
+        var repositories = resp.data.user.repositories.nodes;
         console.log(repositories);
 
         repositories.map((item) => {
@@ -131,8 +161,8 @@ function getRepo() {
           var today = Date.parse(new Date());
           var msInDay = 24 * 60 * 60 * 1000;
           var diff = today - date;
-          //console.log(today);
           console.log(diff);
+
           var color = `<i style="display:none"></i>`;
           var description = `<div style="margin: 12px"></div>`;
           var stargazerCount = `<i style="display:none"></i>`;
@@ -157,9 +187,14 @@ function getRepo() {
             forkCount = `<i class="fas fa-code-branch"></i>
         <span id="branch-count"> ${item.forkCount}</span>`;
           }
-          userRepoList.forEach((elem) => {
-            elem.innerHTML += `
-        <li class="user-repo-items">
+
+          li.forEach((elem) => {
+            // elem.innerHTML = "";
+            var i = document.createElement("li");
+            i.classList.add("user-repo-items");
+            // document.querySelectorAll(".user-repo-items").innerHTML = "";
+            i.innerHTML = `
+      
         <div class="user-repo-info-div">
           <div class="repo-title-div">
             <h3 id="repo-title">${item.name}</h3>
@@ -181,8 +216,9 @@ function getRepo() {
             </div>
           </div>
         </div>
-      </li>
+     
        `;
+            elem.appendChild(i);
           });
         });
       }
