@@ -23,6 +23,7 @@ var desktopView = document.getElementById("desktop-view");
 
 var form = document.getElementById("myForm");
 var repoForm = document.getElementById("repo-form");
+var mobileForm = document.getElementById("mobile-search");
 function handleForm(event) {
   event.preventDefault();
   getRepo();
@@ -30,12 +31,23 @@ function handleForm(event) {
 form.addEventListener("submit", handleForm);
 repoForm.addEventListener("submit", searchRepo);
 
+mobileForm.addEventListener("submit", mobileSearch);
+
 function showSpinner() {
   loadingDiv.style.visibility = "visible";
 }
 
 function hideSpinner() {
   loadingDiv.style.visibility = "hidden";
+}
+
+function mobileSearch(event) {
+  event.preventDefault();
+  var mobileName = document.getElementById("mobile-search-input").value;
+  console.log(mobileName);
+  showSpinner();
+  fetchData(mobileName);
+  mobileForm.reset();
 }
 
 function searchRepo(event) {

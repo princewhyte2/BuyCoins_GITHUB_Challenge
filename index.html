@@ -113,13 +113,16 @@
       <main id="main">
         <section class="find-repo-section">
           <div class="mobile-input-div">
-            <input
-              style="width: 100%"
-              type="search"
-              name=""
-              placeholder="Find a repository.. and press the enter key"
-              id="responsive-search-input"
-            />
+            <form id="mobile-search">
+              <input
+                style="width: 100%"
+                type="search"
+                name=""
+                placeholder="Type a repository username.. and press the enter key"
+                id="mobile-search-input"
+              />
+              <button style="visibility: hidden"></button>
+            </form>
           </div>
         </section>
         <section class="user-repo-section">
@@ -295,7 +298,7 @@
                         id="repo-input"
                         type="search"
                         class="input-form"
-                        placeholder="Find a repository..."
+                        placeholder="Type a repository username.. and press the enter key"
                       />
                       <button style="visibility: hidden"></button>
                     </form>
