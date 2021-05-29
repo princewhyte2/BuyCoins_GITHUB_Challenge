@@ -1,3 +1,5 @@
+import API_KEY from "./apikey.js";
+
 function showResponsiveNav() {
   var nav = document.getElementById("res-nav");
   if (nav.className == "mobile-nav-menu") {
@@ -6,6 +8,13 @@ function showResponsiveNav() {
     nav.className = "mobile-nav-menu";
   }
 }
+
+var navIcon = document.getElementById("nav-icon");
+navIcon.addEventListener("click", showResponsiveNav);
+
+// var getRepo = document.getElementById("getRepo")
+// getRepo.addEventListener("click")
+
 var loadingDiv = document.getElementById("loading");
 var dispalyInfoDiv = document.getElementById("display-info");
 var formInputDiv = document.getElementById("form-input-div");
@@ -16,6 +25,7 @@ var form = document.getElementById("myForm");
 var repoForm = document.getElementById("repo-form");
 function handleForm(event) {
   event.preventDefault();
+  getRepo();
 }
 form.addEventListener("submit", handleForm);
 repoForm.addEventListener("submit", searchRepo);
@@ -108,7 +118,7 @@ function fetchData(loginName) {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer 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",
+      Authorization: `Bearer ${API_KEY}`,
     },
     body: body,
   })

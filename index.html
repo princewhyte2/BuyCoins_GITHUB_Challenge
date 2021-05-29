@@ -19,7 +19,7 @@
       <header>
         <nav class="navbar" id="mobile-navbar">
           <ul class="mobile-nav-wrapper">
-            <li onclick="showResponsiveNav()" class="mobile-nav-item">
+            <li id="nav-icon" class="mobile-nav-item">
               <i class="fas fa-bars" style="font-size: 24px"></i>
             </li>
             <li class="mobile-nav-item github">
@@ -360,12 +360,7 @@
               class="usernameInput"
               required
             />
-            <input
-              type="submit"
-              value="Search"
-              class="form-button"
-              onclick="getRepo()"
-            />
+            <input type="submit" value="Search" class="form-button" />
           </form>
         </div>
         <div>
@@ -375,6 +370,6 @@
       <div id="loading" class="loading">Loading&#8230;</div>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>
