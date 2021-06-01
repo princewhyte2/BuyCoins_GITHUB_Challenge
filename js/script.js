@@ -181,7 +181,7 @@ function fetchData(loginName) {
         repositories.map((item) => {
           var date = Date.parse(item.updatedAt);
           var today = Date.parse(new Date());
-          var msInDay = 24 * 60 * 60 * 1000;
+
           var diff = today - date;
           console.log(diff);
 
