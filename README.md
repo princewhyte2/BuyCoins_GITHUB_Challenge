@@ -1,1 +1,1 @@
-# GraphQL-GitHub-API
+# BuyCoins-Github_Challenge
